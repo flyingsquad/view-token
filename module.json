@@ -1,0 +1,15 @@
+{
+  "id": "view-token",
+  "title": "View Token Art",
+  "url": "https://github.com/flyingsquad/view-token",
+  "manifest": "https://raw.githubusercontent.com/flyingsquad/view-token/main/module.json",
+  "download": "https://github.com/flyingsquad/view-token/archive/refs/tags/v0.0.0.zip",
+  "version": "0.0.0",
+  "esmodules": [
+	"./view-token.js"
+  ],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "13"
+  }
+}
