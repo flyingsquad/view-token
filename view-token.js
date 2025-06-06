@@ -9,6 +9,18 @@ Hooks.once("setup", () => {
     restricted: false,
     onDown: viewToken
   });
+  game.keybindings.register("view-token", "view-art-key", {
+    name: "View Actor Art",
+    hint: "Display actor art for hovered token.",
+    editable: [
+		{
+			key: 'KeyV',
+			modifiers: ['Shift']
+		}
+	],
+    restricted: false,
+    onDown: viewArt
+  });
   
   function viewToken(event) {
 	const token = canvas.tokens.hover;
@@ -18,7 +30,20 @@ Hooks.once("setup", () => {
 			title,
 			shareable: true
 		}).render(true)
-	  return;
+    }
+  }
+
+  function viewArt(event) {
+	const token = canvas.tokens.hover;
+	if (token && !event.repeat) {
+		const actor = game.actors.get(token.document.actorId);
+		if (!actor)
+			return;
+		const title = actor.name;
+		new ImagePopout(actor.img, {
+			title,
+			shareable: true
+		}).render(true)
     }
   }
 });
