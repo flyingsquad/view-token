@@ -25,7 +25,7 @@ Hooks.once("setup", () => {
   function viewToken(event) {
 	const token = canvas.tokens.hover;
 	if (token && !event.repeat) {
-		const title = token.document.name;
+		const title = game.settings.get('view-token', 'hidename') ? "" : token.document.name;
 		new ImagePopout(token.document.texture.src, {
 			title,
 			shareable: true
@@ -39,11 +39,24 @@ Hooks.once("setup", () => {
 		const actor = game.actors.get(token.document.actorId);
 		if (!actor)
 			return;
-		const title = actor.name;
+		const title = game.settings.get('view-token', 'hidename') ? "" : actor.name;
 		new ImagePopout(actor.img, {
 			title,
 			shareable: true
 		}).render(true)
     }
   }
+});
+
+Hooks.once('init', async function () {
+	game.settings.register('view-token', 'hidename', {
+	  name: 'Hide Names',
+	  hint: 'Do not put the name of the token/actor in the window title bar.',
+	  scope: 'world',     // "world" = sync to db, "client" = local storage
+	  config: true,       // false if you dont want it to show in module config
+	  type: Boolean,       // Number, Boolean, String, Object
+	  default: false,
+	  onChange: value => { // value is the new value of the setting
+	  }
+	});
 });
