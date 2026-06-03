@@ -3,13 +3,13 @@
   "title": "View Token Art",
   "url": "https://github.com/flyingsquad/view-token",
   "manifest": "https://raw.githubusercontent.com/flyingsquad/view-token/main/module.json",
-  "download": "https://github.com/flyingsquad/view-token/archive/refs/tags/v0.0.2.zip",
-  "version": "0.0.2",
+  "download": "https://github.com/flyingsquad/view-token/archive/refs/tags/v0.0.3.zip",
+  "version": "0.0.3",
   "esmodules": [
 	"./view-token.js"
   ],
   "compatibility": {
     "minimum": "11",
-    "verified": "13"
+    "verified": "14"
   }
 }
